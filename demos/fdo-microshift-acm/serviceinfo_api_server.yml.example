@@ -1,0 +1,37 @@
+---
+service_info:
+  initial_user: 
+    username: admin
+    sshkeys:
+    - "ssh-rsa AAAA"
+  files:
+  - path: /etc/crio/openshift-pull-secret
+    permissions: 600
+    source_path: /etc/fdo-configs/device0/var/home/admin/openshift-pull-secret.json
+  - path: /var/home/admin/acm-hub-ca.crt
+    permissions: 600
+    source_path: /etc/fdo-configs/device0/var/home/admin/acm-hub-ca.crt
+  - path: /var/home/admin/microshift-registration.sh
+    permissions: 644
+    source_path: /etc/fdo-configs/device0/var/home/admin/microshift-registration.sh
+  commands:
+  - command: bash
+    args:
+    - /var/home/admin/microshift-registration.sh
+    - <MY_ACM_REGISTRATION_TOKEN>
+    - <MY_ACM_REGISTRATION_HOST>
+    return_stdout: true
+    return_stderr: true
+  diskencryption_clevis: 
+  - disk_label: /dev/vda4
+    binding:
+      pin: tpm2
+      config: "{}"
+    reencrypt: true
+  additional_serviceinfo: ~
+bind: "0.0.0.0:8083"
+service_info_auth_token: g0bzYqDEqjV4kqf/NJc/1ajl1iS9g4+tBCzALMC8zew=
+admin_auth_token: 97huveLqSJovlVaalaA2Yu1wDvVP15psZtuJYHOJvQs=
+device_specific_store_driver:
+  Directory:
+    path: /etc/fdo/aio/stores/serviceinfo_api_devices
