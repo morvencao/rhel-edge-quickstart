@@ -18,8 +18,8 @@ service_info:
   - command: bash
     args:
     - /var/home/admin/microshift-registration.sh
-    - <MY_ACM_REGISTRATION_TOKEN>
-    - <MY_ACM_REGISTRATION_HOST>
+    - <ACM_REGISTRATION_TOKEN>
+    - <ACM_REGISTRATION_HOST>
     return_stdout: true
     return_stderr: true
   diskencryption_clevis: 

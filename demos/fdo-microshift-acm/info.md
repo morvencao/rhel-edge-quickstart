@@ -70,17 +70,17 @@ subjects:
 EOF
 
 kubectl get configmap -n kube-system kube-root-ca.crt -o=jsonpath="{.data['ca\.crt']}" > ${PWD}/fdo-configs/device0/var/home/admin/acm-hub-ca.crt
-export MY_ACM_REGISTRATION_TOKEN=$(kubectl get secret -n multicluster-engine managed-cluster-import-agent-registration-sa-token -o=jsonpath='{.data.token}' | base64 -d)
-export MY_ACM_REGISTRATION_HOST=$(kubectl get route -n multicluster-engine agent-registration -o=jsonpath="{.spec.host}")
+export ACM_REGISTRATION_TOKEN=$(kubectl get secret -n multicluster-engine managed-cluster-import-agent-registration-sa-token -o=jsonpath='{.data.token}' | base64 -d)
+export ACM_REGISTRATION_HOST=$(kubectl get route -n multicluster-engine agent-registration -o=jsonpath="{.spec.host}")
 ```
 
 4) In the FDO `serviceinfo_api_server.yml.example` file. include
 * Your public SSH key - `export SSHKEY=<MY_SSH_PUBLIC_KEY>`
 * The right disk drive (`disk_label` parameter)
-* Your OpenShift pull secret - `cp <MY_PULL_SECRET_FILE> fdo-configs/device0/var/home/admin/openshift-pull-secret.json`
-* Your ACM Hub cluster CA - `cp <MY_ACM_HUB_CA> fdo-configs/device0/var/home/admin/acm-hub-ca.crt` (done in the last step)
-* Your ACM registration token - `export MY_ACM_REGISTRATION_TOKEN=<MY_ACM_REGISTRATION_TOKEN>` (done in the last step)
-* Your ACM registration host - `export MY_ACM_REGISTRATION_HOST=<MY_ACM_REGISTRATION_HOST>` (done in the last step)
+* Your OpenShift pull secret - `cp <OPENSHIFT_PULL_SECRET_FILE> fdo-configs/device0/var/home/admin/openshift-pull-secret.json`
+* Your ACM Hub cluster CA - `cp <ACM_HUB_CA> fdo-configs/device0/var/home/admin/acm-hub-ca.crt` (done in the last step)
+* Your ACM registration token - `export ACM_REGISTRATION_TOKEN=<ACM_REGISTRATION_TOKEN>` (done in the last step)
+* Your ACM registration host - `export ACM_REGISTRATION_HOST=<ACM_REGISTRATION_HOST>` (done in the last step)
 
 
 > NOTE: There are other parameters such as `service_info_auth_token` and `admin_auth_token` that will be filled in by the `prepare-fdo-server.sh` during next step.

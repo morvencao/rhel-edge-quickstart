@@ -75,4 +75,4 @@ sleep 10
 
 # register MicroShift cluster to ACM hub
 curl --cacert /var/home/admin/acm-hub-ca.crt -H "Authorization: Bearer $ACM_REGISTRATION_TOKEN" https://$ACM_REGISTRATION_HOST/agent-registration/crds/v1 | oc --kubeconfig /var/lib/microshift/resources/kubeadmin/kubeconfig apply -f -
-curl --cacert /var/home/admin/acm-hub-ca.crt -H "Authorization: Bearer $ACM_REGISTRATION_TOKEN" https://$ACM_REGISTRATION_HOST/agent-registration/manifests/microshift-$(tr -dc A-Za-z0-9 </dev/urandom | head -c 5 ; echo '') | oc --kubeconfig /var/lib/microshift/resources/kubeadmin/kubeconfig apply -f -
+curl --cacert /var/home/admin/acm-hub-ca.crt -H "Authorization: Bearer $ACM_REGISTRATION_TOKEN" https://$ACM_REGISTRATION_HOST/agent-registration/manifests/microshift-$(tr -dc a-z0-9 </dev/urandom | head -c 5 ; echo '') | oc --kubeconfig /var/lib/microshift/resources/kubeadmin/kubeconfig apply -f -

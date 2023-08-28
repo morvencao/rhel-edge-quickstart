@@ -41,8 +41,8 @@ then
 fi
 
 sed -i "s|ssh-rsa AAAA|${SSHKEY}|g" serviceinfo_api_server.yml 
-sed -i "s|<MY_ACM_REGISTRATION_TOKEN>|${MY_ACM_REGISTRATION_TOKEN}|g" serviceinfo_api_server.yml 
-sed -i "s|<MY_ACM_REGISTRATION_HOST>|${MY_ACM_REGISTRATION_HOST}|g" serviceinfo_api_server.yml 
+sed -i "s|<ACM_REGISTRATION_TOKEN>|${ACM_REGISTRATION_TOKEN}|g" serviceinfo_api_server.yml 
+sed -i "s|<ACM_REGISTRATION_HOST>|${ACM_REGISTRATION_HOST}|g" serviceinfo_api_server.yml 
 
 rm -rf  /etc/fdo/aio/configs/serviceinfo_api_server.yml
 mkdir -p /etc/fdo/aio/configs
