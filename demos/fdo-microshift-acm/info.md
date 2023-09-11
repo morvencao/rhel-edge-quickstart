@@ -6,7 +6,7 @@ This demo shows the deployment of a RHEL for Edge system embedding MicroShift re
 
 ## Overview
 
-![microshift-acm-fdo](./microshift-acm-fdo.jpg)
+![microshift-registration-acm-fdo-implementation](./microshift-registration-acm-fdo-implementation.jpg)
 
 ## Preparing the demo
 
